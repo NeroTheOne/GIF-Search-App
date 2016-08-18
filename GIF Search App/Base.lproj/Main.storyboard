@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GIF_Search_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dlt-e2-WFD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-tu-nLX">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4fq-T5-DK4">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="D5r-gy-9n5">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d5g-gZ-J7w">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="d5g-gZ-J7w" firstAttribute="top" secondItem="D5r-gy-9n5" secondAttribute="top" id="LbR-NN-ZTD"/>
+                                            <constraint firstAttribute="trailing" secondItem="d5g-gZ-J7w" secondAttribute="trailing" id="N8L-Hc-yME"/>
+                                            <constraint firstItem="d5g-gZ-J7w" firstAttribute="leading" secondItem="D5r-gy-9n5" secondAttribute="leading" id="Yxy-kV-qcw"/>
+                                            <constraint firstAttribute="bottom" secondItem="d5g-gZ-J7w" secondAttribute="bottom" id="zc9-P9-FXL"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dlt-e2-WFD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2iI-c8-F9D"/>
+                            <constraint firstItem="2tA-tu-nLX" firstAttribute="top" secondItem="dlt-e2-WFD" secondAttribute="bottom" id="Bdm-wM-tvu"/>
+                            <constraint firstAttribute="trailing" secondItem="2tA-tu-nLX" secondAttribute="trailing" id="Pdu-jq-CRx"/>
+                            <constraint firstAttribute="trailing" secondItem="dlt-e2-WFD" secondAttribute="trailing" id="Vti-A1-k2v"/>
+                            <constraint firstItem="dlt-e2-WFD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ajr-LB-aBG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2tA-tu-nLX" secondAttribute="bottom" id="eXN-R6-rki"/>
+                            <constraint firstItem="2tA-tu-nLX" firstAttribute="top" secondItem="dlt-e2-WFD" secondAttribute="bottom" id="naJ-e8-QFA"/>
+                            <constraint firstItem="2tA-tu-nLX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s2c-8L-hrV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="307"/>
+        </scene>
+    </scenes>
+</document>
