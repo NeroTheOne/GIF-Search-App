@@ -12,4 +12,7 @@ class GIF {
 
   var url: String?
   
+  init (searchedURL: String? = nil) {
+    url = searchedURL
+  }
 }

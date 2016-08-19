@@ -66,6 +66,9 @@
                             <constraint firstItem="2tA-tu-nLX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s2c-8L-hrV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="dlt-e2-WFD" id="o2Z-JF-JJQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,17 +11,21 @@ import Alamofire
 
 class ViewController: UIViewController {
   
-  var alamoHandler = AlamoHandler()
+  //IBOutlets
+  @IBOutlet weak var searchBar: UISearchBar!
+ 
+  //properties
+  let alamoHandler = AlamoHandler()
+  let design = UIDesigns()
   var gifs = [GIF]()
   
+  //life cycles
   override func viewDidLoad() {
     super.viewDidLoad()
-    alamoHandler.runAlamofire()
+    alamoHandler.runAlamofire("video games")
+    design.searchBar(searchBar)
     
   }
-
-
-
-
+  
 }
 
