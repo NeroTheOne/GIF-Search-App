@@ -12,6 +12,7 @@ import Alamofire
 class ViewController: UIViewController {
   
   var alamoHandler = AlamoHandler()
+  var gifs = [GIF]()
   
   override func viewDidLoad() {
     super.viewDidLoad()

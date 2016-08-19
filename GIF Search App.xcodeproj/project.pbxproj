@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		995A901D1D668F4E008C11C3 /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A901C1D668F4E008C11C3 /* GIF.swift */; };
 		99D3C6B11D6538FC00E7A30A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D3C6B01D6538FC00E7A30A /* AppDelegate.swift */; };
 		99D3C6B31D6538FC00E7A30A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D3C6B21D6538FC00E7A30A /* ViewController.swift */; };
 		99D3C6B61D6538FC00E7A30A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D3C6B41D6538FC00E7A30A /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		09C0AAEFB04863C4C0F17C41 /* Pods-GIF Search App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIF Search App.release.xcconfig"; path = "Pods/Target Support Files/Pods-GIF Search App/Pods-GIF Search App.release.xcconfig"; sourceTree = "<group>"; };
+		995A901C1D668F4E008C11C3 /* GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIF.swift; sourceTree = "<group>"; };
 		99D3C6AD1D6538FC00E7A30A /* GIF Search App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GIF Search App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D3C6B01D6538FC00E7A30A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99D3C6B21D6538FC00E7A30A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				99D3C6B21D6538FC00E7A30A /* ViewController.swift */,
 				99D3C6C61D653E8000E7A30A /* AlamoHandler.swift */,
+				995A901C1D668F4E008C11C3 /* GIF.swift */,
 				99D3C6B41D6538FC00E7A30A /* Main.storyboard */,
 				99D3C6C51D65392B00E7A30A /* Supporting Files */,
 			);
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995A901D1D668F4E008C11C3 /* GIF.swift in Sources */,
 				99D3C6B31D6538FC00E7A30A /* ViewController.swift in Sources */,
 				99D3C6C71D653E8000E7A30A /* AlamoHandler.swift in Sources */,
 				99D3C6B91D6538FC00E7A30A /* GIF_Search_App.xcdatamodeld in Sources */,
