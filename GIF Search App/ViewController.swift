@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
   
   //IBOutlets
   @IBOutlet weak var searchBar: UISearchBar!
@@ -22,10 +22,17 @@ class ViewController: UIViewController {
   //life cycles
   override func viewDidLoad() {
     super.viewDidLoad()
-    alamoHandler.runAlamofire("video games")
+    searchBar.delegate = self
     design.searchBar(searchBar)
     
   }
+  
+  //searchBar delegates
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    alamoHandler.runAlamofire(searchText)
+  }
+  
   
 }
 

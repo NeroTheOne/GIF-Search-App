@@ -25,7 +25,7 @@ class AlamoHandler {
         
         if let JSON = response.result.value {
           print("JSON: \(JSON)")
-          self.parseJson(JSON)
+
           
         }
         
@@ -34,15 +34,15 @@ class AlamoHandler {
   
   var gif = GIF()
   
-  func parseJson(json: AnyObject) {
-    let data = json["data"] as! [NSDictionary]
-    
-    for dictionary in data {
-      let url = dictionary["embed_url"] as! String
-      gif = GIF(searchedURL: url)
-      gifs.append(gif)
-    }
-  }
+//  func parseJson(json: AnyObject) {
+//    let data = json["data"] as! [NSDictionary]
+//    
+//    for dictionary in data {
+//      let url = dictionary["embed_url"] as! String
+//      gif = GIF(searchedURL: url)
+//      gifs.append(gif)
+//    }
+//  }
   
   
 }
