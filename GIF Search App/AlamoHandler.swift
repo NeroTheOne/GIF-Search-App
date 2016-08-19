@@ -9,10 +9,10 @@
 import Foundation
 import Alamofire
 
-class AlmoHandler {
+class AlamoHandler {
 
   func runAlamofire() {
-    Alamofire.request(.GET, "https://httpbin.org/get", parameters: ["foo": "bar"])
+    Alamofire.request(.GET, "https://api.giphy.com/v1/gifs?api_key=dc6zaTOxFJmzC&ids=feqkVgjJpYtjy,7rzbxdu0ZEXLy", parameters: nil)
       .responseJSON { response in
         print(response.request)  // original URL request
         print(response.response) // URL response
@@ -23,7 +23,8 @@ class AlmoHandler {
           print("JSON: \(JSON)")
         }
     }
-  
   }
+  
+  
 }
 

@@ -10,10 +10,12 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
-
+  
+  var alamoHandler = AlamoHandler()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    alamoHandler.runAlamofire()
     
   }
 

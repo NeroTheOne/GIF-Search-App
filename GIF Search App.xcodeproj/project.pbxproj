@@ -82,7 +82,6 @@
 		99D3C6AF1D6538FC00E7A30A /* GIF Search App */ = {
 			isa = PBXGroup;
 			children = (
-				99D3C6B01D6538FC00E7A30A /* AppDelegate.swift */,
 				99D3C6B21D6538FC00E7A30A /* ViewController.swift */,
 				99D3C6C61D653E8000E7A30A /* AlamoHandler.swift */,
 				99D3C6B41D6538FC00E7A30A /* Main.storyboard */,
@@ -94,6 +93,7 @@
 		99D3C6C51D65392B00E7A30A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				99D3C6B01D6538FC00E7A30A /* AppDelegate.swift */,
 				99D3C6BA1D6538FC00E7A30A /* Assets.xcassets */,
 				99D3C6BC1D6538FC00E7A30A /* LaunchScreen.storyboard */,
 				99D3C6BF1D6538FC00E7A30A /* Info.plist */,
