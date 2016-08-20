@@ -13,5 +13,6 @@ class UIDesigns {
 
   func searchBar(searchBar: UISearchBar) {
     searchBar.barStyle = UIBarStyle.BlackTranslucent
+    
   }
 }

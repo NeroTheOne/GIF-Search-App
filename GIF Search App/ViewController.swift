@@ -24,7 +24,14 @@ class ViewController: UIViewController, UISearchBarDelegate {
     super.viewDidLoad()
     searchBar.delegate = self
     design.searchBar(searchBar)
+    let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+    view.addGestureRecognizer(tap)
     
+  }
+  
+  func dismissKeyboard() {
+    //Causes the view (or one of its embedded text fields) to resign the first responder status.
+    view.endEditing(true)
   }
   
   //searchBar delegates
@@ -32,7 +39,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
     alamoHandler.runAlamofire(searchText)
   }
-  
   
 }
 
