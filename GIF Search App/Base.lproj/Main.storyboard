@@ -31,25 +31,22 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="D5r-gy-9n5">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="D5r-gy-9n5">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d5g-gZ-J7w">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fuck you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ox-hC-g3W">
+                                                    <rect key="frame" x="41" y="64" width="69" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="d5g-gZ-J7w" firstAttribute="top" secondItem="D5r-gy-9n5" secondAttribute="top" id="LbR-NN-ZTD"/>
-                                            <constraint firstAttribute="trailing" secondItem="d5g-gZ-J7w" secondAttribute="trailing" id="N8L-Hc-yME"/>
-                                            <constraint firstItem="d5g-gZ-J7w" firstAttribute="leading" secondItem="D5r-gy-9n5" secondAttribute="leading" id="Yxy-kV-qcw"/>
-                                            <constraint firstAttribute="bottom" secondItem="d5g-gZ-J7w" secondAttribute="bottom" id="zc9-P9-FXL"/>
-                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -67,6 +64,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="2tA-tu-nLX" id="WcI-WN-RiE"/>
                         <outlet property="searchBar" destination="dlt-e2-WFD" id="o2Z-JF-JJQ"/>
                     </connections>
                 </viewController>

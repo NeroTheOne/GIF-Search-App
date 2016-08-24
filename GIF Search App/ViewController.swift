@@ -9,10 +9,11 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
   
   //IBOutlets
   @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var collectionView: UICollectionView!
  
   //properties
   let alamoHandler = AlamoHandler()
@@ -23,7 +24,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     searchBar.delegate = self
+    collectionView.delegate = self
     design.searchBar(searchBar)
+    
     let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
     view.addGestureRecognizer(tap)
     
@@ -37,8 +40,38 @@ class ViewController: UIViewController, UISearchBarDelegate {
   //searchBar delegates
   
   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-    alamoHandler.runAlamofire(searchText)
+    alamoHandler.runAlamofire(searchText) { (GIFs: [GIF]) -> Void in
+      self.gifs = GIFs
+      print("DEBUG", self.gifs)
+      self.collectionView.reloadData()
+    }
+    
   }
   
+  //Collection View Data Source
+  
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return gifs.count
+  }
+  
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
+    cell.backgroundColor = UIColor.blackColor()
+    return cell
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
