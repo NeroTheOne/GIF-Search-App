@@ -8,17 +8,20 @@
 
 import UIKit
 import Alamofire
+import Gifu
 
-class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
+class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
   
   //IBOutlets
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var collectionView: UICollectionView!
- 
+  
   //properties
   let alamoHandler = AlamoHandler()
   let design = UIDesigns()
   var gifs = [GIF]()
+  var urls = [String]()
+  var data = NSData()
   
   //life cycles
   override func viewDidLoad() {
@@ -29,7 +32,6 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDel
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
     view.addGestureRecognizer(tap)
-    
   }
   
   func dismissKeyboard() {
@@ -40,9 +42,8 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDel
   //searchBar delegates
   
   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-    alamoHandler.runAlamofire(searchText) { (GIFs: [GIF]) -> Void in
-      self.gifs = GIFs
-      print("DEBUG", self.gifs)
+    alamoHandler.runAlamofire(searchText) { (URLs: [String]) -> Void in
+      self.urls = URLs
       self.collectionView.reloadData()
     }
     
@@ -51,14 +52,19 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDel
   //Collection View Data Source
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return gifs.count
+    return urls.count
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CollectionViewCell
     cell.backgroundColor = UIColor.blackColor()
+    cell.GIFImageView.getData(urls[indexPath.row])
+    
     return cell
   }
+  
+  
+  
 }
 
 
