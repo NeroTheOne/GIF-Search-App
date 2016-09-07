@@ -37,7 +37,7 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
       super.viewWillAppear(animated)
       alamoHandler.getTrending { (json) in
          self.alamoHandler.getURL(json, completion: { (giphyURL) in
-            self.URLs = giphyURL
+            self.URLs = giphyURLz
          })
       }
    }

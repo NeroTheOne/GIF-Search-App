@@ -43,7 +43,24 @@ class AlamofireHandler {
       
       completion(giphyURL: urls)
    }
+   
+   func getData(urls:[String], completion:(giphyData:[NSData]) -> Void){
+      var datas = [NSData]()
+      
+      for url in urls {
+         guard let nsUrl = NSURL(string: url) else {return}
+         guard let data = NSData(contentsOfURL: nsUrl) else {return}
+         datas.append(data)
+      }
+   }
 }
+
+
+
+
+
+
+
 
 
 
