@@ -11,7 +11,7 @@ import Alamofire
 
 class AlamofireHandler {
    
-   func getTrending(completion:(urls:[String]) -> Void){
+   func getTrending(completion:(json:AnyObject) -> Void){
       Alamofire.request(.GET, "\(GiphyApi.host)\(GiphyApi.EndPoint.trending)",
          parameters: ["api_key": "dc6zaTOxFJmzC", "rating": "r"])
          .responseJSON { response in
@@ -22,46 +22,28 @@ class AlamofireHandler {
             
             if let JSON = response.result.value {
                print("JSON: \(JSON)")
-               dispatch_async(dispatch_get_main_queue()) {
-                  completion(urls: self.getURL(JSON))
-               }
+               completion(json: JSON)
             }
-            
       }
    }
    
-   func getURL(json: AnyObject) -> [String]{
-      print("getURL executed")
-      if let data = json["data"] as? [NSDictionary] {
-         print("json[data]")print("Hey")
-         print("")
-         for dictionary in data {
-            let images = dictionary["images"]!
-            let downsized_medium = images["downsized_medium"]!
-            let url = downsized_medium!["url"] as? String
-            print("GIF URL: \(url!)")
-   
-            }
-         }
+   func getURL(json: AnyObject, completion:(giphyURL:[String]) -> Void){
+      
+      var urls = [String]()
+      
+      guard let dictionaries = json["data"] as? [NSDictionary] else { print("json[data] not found") ; return}
+      
+      for dictionary in dictionaries {
+         guard let images = dictionary["images"] else {return}
+         guard let downsized_medium = images["downsized_medium"] else {return}
+         guard let url = downsized_medium!["url"] as? String else {return}
+         
+         urls.append(url)
+      }
+      
+      completion(giphyURL: urls)
    }
 }
 
-struct GiphyApi {
-   static let host = "https://api.giphy.com"
-   static let apiKey = "dc6zaTOxFJmzC"
-   
-   struct EndPoint {
-      static let search = "/v1/gifs/search"
-      static let trending = "/v1/gifs/trending"
-   }
-   
-   struct Parameters {
-      static let query = "q"
-      static let limit = "limit"
-      static let offset = "offset"
-      static let rating = "rating"
-      static let format = "fmt"
-   }
-}
 
 
