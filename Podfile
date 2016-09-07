@@ -4,4 +4,5 @@ use_frameworks!
 
 target ‘GIF Search App’ do
     pod 'Alamofire', '~> 3.4'
+    pod 'Gifu'
 end
