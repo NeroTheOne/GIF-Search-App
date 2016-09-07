@@ -19,10 +19,9 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
    
    @IBOutlet weak var collectionView: UICollectionView!
    
-   var alamoHandler = AlamofireHandler()
-   var URLs: [String]? {
+   var datas: [NSData]? {
       willSet{
-         print("URL added: \(newValue)")
+         print("Data added: \(newValue)")
       }
    }
    
@@ -33,11 +32,15 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
      
    }
    
+   var alamoHandler = AlamofireHandler()
+   
    override func viewWillAppear(animated: Bool) {
       super.viewWillAppear(animated)
       alamoHandler.getTrending { (json) in
          self.alamoHandler.getURL(json, completion: { (giphyURL) in
-            self.URLs = giphyURLz
+            self.alamoHandler.getData(giphyURL, completion: { (giphyData) in
+               self.datas = giphyData
+            })
          })
       }
    }

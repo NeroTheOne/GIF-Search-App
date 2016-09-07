@@ -52,6 +52,8 @@ class AlamofireHandler {
          guard let data = NSData(contentsOfURL: nsUrl) else {return}
          datas.append(data)
       }
+      
+      completion(giphyData: datas)
    }
 }
 
