@@ -66,9 +66,12 @@ class GIFViewController: UICollectionViewController {//UIViewController, UIColle
    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GifCell", forIndexPath: indexPath) as! GIFCollectionViewCell
       let data = giphyDatas[indexPath.row]
-      cell.animatableImageView.animateWithImageData(data)
       
-      return cell 
+      dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)){
+         cell.animatableImageView.animateWithImageData(data)
+      }
+   
+      return cell
    }
    
 }
