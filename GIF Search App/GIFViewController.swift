@@ -11,47 +11,62 @@ import UIKit
 import Alamofire
 import Gifu
 
-class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class GIFViewController: UICollectionViewController {//UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
    
    struct StoryBoard {
       static let collectionViewCell = "GifCell"
    }
    
-   @IBOutlet weak var collectionView: UICollectionView!
+//   @IBOutlet weak var collectionView: UICollectionView!
    
-   var datas: [NSData]? {
+   var giphyDatas = [NSData]() {
       willSet{
-         print("Data added: \(newValue)")
+         print("NEW giphyData added: \(newValue)")
+         collectionView!.reloadData()
       }
    }
+   
+   var urls = [String]() {
+      willSet{
+         print("NEW URL added: \(newValue)")
+      }
+   }
+   
    
    override func viewDidLoad() {
       print("viewDidLoad fired")
       super.viewDidLoad()
-      collectionView.delegate = self
+//      collectionView.delegate = self
      
    }
    
    var alamoHandler = AlamofireHandler()
    
    override func viewWillAppear(animated: Bool) {
+      print("viewWillAppear fired")
       super.viewWillAppear(animated)
+      
       alamoHandler.getTrending { (json) in
          self.alamoHandler.getURL(json, completion: { (giphyURL) in
+            self.urls = giphyURL
             self.alamoHandler.getData(giphyURL, completion: { (giphyData) in
-               self.datas = giphyData
+               dispatch_async(dispatch_get_main_queue()) {
+                  self.giphyDatas = giphyData
+               }
             })
          })
       }
    }
    
    
-   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 1
+   override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      return giphyDatas.count
    }
    
-   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GifCell", forIndexPath: indexPath)
+   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GifCell", forIndexPath: indexPath) as! GIFCollectionViewCell
+      let data = giphyDatas[indexPath.row]
+      cell.animatableImageView.animateWithImageData(data)
       
       return cell 
    }
