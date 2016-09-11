@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="QLO-hT-Amb" kind="relationship" relationship="rootViewController" id="SGy-qx-rnR"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aE0-Gf-WnA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMx-hy-5lb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -37,7 +37,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GifCell" id="CKJ-LQ-VL4" customClass="GIFCollectionViewCell" customModule="GIF_Search_App" customModuleProvider="target">
-                                <rect key="frame" x="150.5" y="64" width="299" height="300"/>
+                                <rect key="frame" x="150.5" y="0.0" width="299" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="299" height="300"/>
@@ -88,11 +88,13 @@
                             <outlet property="delegate" destination="QLO-hT-Amb" id="Mrp-B4-7qx"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="pDv-SS-JUG"/>
+                    <navigationItem key="navigationItem" id="pDv-SS-JUG">
+                        <nil key="title"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXr-f6-HbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="411" y="358"/>
+            <point key="canvasLocation" x="1060" y="355"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -117,26 +119,70 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GifCell" id="D5r-gy-9n5" customClass="GIFCollectionViewCell" customModule="GIF_Search_App" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="0.0" width="300" height="300"/>
+                                        <rect key="frame" x="150" y="64" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eDp-Se-RO6" customClass="GIFAnimatableImageView" customModule="Gifu">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eDp-Se-RO6" customClass="GIFAnimatableImageView" customModule="GIF_Search_App">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                 </imageView>
+                                                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggE-Iu-LMu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="299" height="300"/>
+                                                    <subviews>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GtP-KE-AIv">
+                                                            <rect key="frame" x="131" y="131" width="37" height="37"/>
+                                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </activityIndicatorView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="GtP-KE-AIv" firstAttribute="leading" secondItem="ggE-Iu-LMu" secondAttribute="leading" constant="131" id="LMW-eB-8tw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="GtP-KE-AIv" secondAttribute="bottom" constant="132" id="LU7-zb-NSh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="GtP-KE-AIv" secondAttribute="trailing" constant="131" id="UhO-Hh-wtd"/>
+                                                        <constraint firstItem="GtP-KE-AIv" firstAttribute="top" secondItem="ggE-Iu-LMu" secondAttribute="top" constant="131" id="knl-Ky-1m4"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="ggE-Iu-LMu" firstAttribute="top" secondItem="D5r-gy-9n5" secondAttribute="top" id="24n-rQ-0nC"/>
+                                            <constraint firstAttribute="trailing" secondItem="ggE-Iu-LMu" secondAttribute="trailing" id="4Ky-Om-Rsb"/>
+                                            <constraint firstAttribute="bottom" secondItem="ggE-Iu-LMu" secondAttribute="bottom" id="5WY-qw-DgE"/>
+                                            <constraint firstAttribute="bottom" secondItem="ggE-Iu-LMu" secondAttribute="bottom" id="7R1-nB-cYt"/>
+                                            <constraint firstAttribute="trailing" secondItem="ggE-Iu-LMu" secondAttribute="trailing" id="86W-yT-GnS"/>
                                             <constraint firstItem="eDp-Se-RO6" firstAttribute="top" secondItem="D5r-gy-9n5" secondAttribute="top" id="DJw-ae-pNb"/>
                                             <constraint firstAttribute="bottom" secondItem="eDp-Se-RO6" secondAttribute="bottom" id="JYe-HK-4OQ"/>
+                                            <constraint firstItem="ggE-Iu-LMu" firstAttribute="leading" secondItem="D5r-gy-9n5" secondAttribute="leading" id="MfX-ME-y0j"/>
                                             <constraint firstItem="eDp-Se-RO6" firstAttribute="leading" secondItem="D5r-gy-9n5" secondAttribute="leading" id="V9I-kP-PHE"/>
+                                            <constraint firstAttribute="trailing" secondItem="ggE-Iu-LMu" secondAttribute="trailing" constant="1" id="bYg-u8-x9V"/>
+                                            <constraint firstItem="ggE-Iu-LMu" firstAttribute="top" secondItem="D5r-gy-9n5" secondAttribute="top" id="cui-yV-YpE"/>
+                                            <constraint firstItem="ggE-Iu-LMu" firstAttribute="leading" secondItem="D5r-gy-9n5" secondAttribute="leading" id="gA9-af-ZZB"/>
+                                            <constraint firstAttribute="bottom" secondItem="ggE-Iu-LMu" secondAttribute="bottom" id="gjB-oV-GER"/>
+                                            <constraint firstItem="ggE-Iu-LMu" firstAttribute="top" secondItem="D5r-gy-9n5" secondAttribute="top" id="gsE-rj-AiY"/>
                                             <constraint firstAttribute="trailing" secondItem="eDp-Se-RO6" secondAttribute="trailing" id="hwk-hJ-bDo"/>
+                                            <constraint firstItem="ggE-Iu-LMu" firstAttribute="leading" secondItem="D5r-gy-9n5" secondAttribute="leading" id="qXg-rq-qu2"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="5WY-qw-DgE"/>
+                                                <exclude reference="86W-yT-GnS"/>
+                                                <exclude reference="bYg-u8-x9V"/>
+                                                <exclude reference="cui-yV-YpE"/>
+                                                <exclude reference="gA9-af-ZZB"/>
+                                                <exclude reference="gjB-oV-GER"/>
+                                                <exclude reference="gsE-rj-AiY"/>
+                                                <exclude reference="qXg-rq-qu2"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
-                                            <outlet property="animatableImageView" destination="eDp-Se-RO6" id="etZ-Ud-3jE"/>
+                                            <outlet property="animatableImageView" destination="eDp-Se-RO6" id="cYZ-vs-UFM"/>
+                                            <outlet property="loadingAnimation" destination="GtP-KE-AIv" id="64F-5y-jmw"/>
+                                            <outlet property="whiteView" destination="ggE-Iu-LMu" id="iE1-XO-Zv1"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -164,12 +210,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="m3w-Ah-AWz"/>
                     <connections>
-                        <outlet property="collectionView" destination="2tA-tu-nLX" id="1WQ-66-yfb"/>
+                        <outlet property="gifsCollectionView" destination="2tA-tu-nLX" id="aeF-HC-jTu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="276"/>
+            <point key="canvasLocation" x="314" y="349"/>
         </scene>
     </scenes>
 </document>

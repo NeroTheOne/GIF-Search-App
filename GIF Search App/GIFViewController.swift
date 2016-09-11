@@ -11,17 +11,19 @@ import UIKit
 import Alamofire
 import Gifu
 
-class GIFViewController: UICollectionViewController {//UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-   
+class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
    struct StoryBoard {
       static let collectionViewCell = "GifCell"
    }
    
 //   @IBOutlet weak var collectionView: UICollectionView!
+   @IBOutlet weak var gifsCollectionView: UICollectionView!
+   
    
    var GIFs = [GIF]() {
       didSet{
-         collectionView?.reloadData()
+         gifsCollectionView?.reloadData()
       }
    }
    
@@ -44,27 +46,29 @@ class GIFViewController: UICollectionViewController {//UIViewController, UIColle
       }
    }
    
-   override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       print("numberOfItemsInSection executed")
       
       return GIFs.count
    }
    
-   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
       
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GifCell", forIndexPath: indexPath) as! GIFCollectionViewCell
       
       return cell
    }
    
-   override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
       guard let cell = cell as? GIFCollectionViewCell else { return }
+      cell.whiteView.hidden = false
+      cell.loadingAnimation.startAnimating()
       cell.setAnimatableImageView(GIFs[indexPath.row])
    }
    
-   override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
       guard let cell = cell as? GIFCollectionViewCell else { return }
-      cell.loadingView.hidden = false
+      cell.whiteView.hidden = false
    }
    
    

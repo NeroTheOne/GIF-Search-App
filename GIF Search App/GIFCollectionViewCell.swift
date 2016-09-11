@@ -7,12 +7,16 @@
 //
 import Foundation
 import UIKit
+import Gifu
 
 class GIFCollectionViewCell: UICollectionViewCell {
+   
 
-   @IBOutlet weak var animatableImageView: GIFAnimatableImageView?
-   @IBOutlet weak var loadingView: UIView!
+
+   @IBOutlet weak var animatableImageView: GIFAnimatableImageView!
+   @IBOutlet weak var whiteView: UIView!
    @IBOutlet weak var loadingAnimation: UIActivityIndicatorView!
+   
    
    func setAnimatableImageView(gif: GIF) {
       guard let urlString = gif.url else { return }
@@ -23,7 +27,7 @@ class GIFCollectionViewCell: UICollectionViewCell {
             dispatch_async(dispatch_get_main_queue()) {
                self.animatableImageView!.animateWithImageData(data)
                self.loadingAnimation.stopAnimating()
-               self.loadingView.hidden = true
+               self.whiteView.hidden = true
             }
          }
          
