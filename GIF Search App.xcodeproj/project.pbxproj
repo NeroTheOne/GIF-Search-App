@@ -10,6 +10,9 @@
 		9902A89F1D7B9C3300435EF5 /* GIFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9902A89E1D7B9C3300435EF5 /* GIFViewController.swift */; };
 		9902A8A11D7B9D1500435EF5 /* AlamofireHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9902A8A01D7B9D1500435EF5 /* AlamofireHandler.swift */; };
 		9902A8A31D7B9DBE00435EF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9902A8A21D7B9DBE00435EF5 /* Constants.swift */; };
+		99BCCD461D850B14005B064E /* GIFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BCCD451D850B14005B064E /* GIFCollectionViewCell.swift */; };
+		99BCCD481D850B22005B064E /* GIFAnimatableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BCCD471D850B22005B064E /* GIFAnimatableImageView.swift */; };
+		99BCCD4A1D851042005B064E /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BCCD491D851042005B064E /* GIF.swift */; };
 		99D3C6B11D6538FC00E7A30A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D3C6B01D6538FC00E7A30A /* AppDelegate.swift */; };
 		99D3C6B61D6538FC00E7A30A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D3C6B41D6538FC00E7A30A /* Main.storyboard */; };
 		99D3C6B91D6538FC00E7A30A /* GIF_Search_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99D3C6B71D6538FC00E7A30A /* GIF_Search_App.xcdatamodeld */; };
@@ -23,6 +26,9 @@
 		9902A89E1D7B9C3300435EF5 /* GIFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFViewController.swift; sourceTree = "<group>"; };
 		9902A8A01D7B9D1500435EF5 /* AlamofireHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireHandler.swift; sourceTree = "<group>"; };
 		9902A8A21D7B9DBE00435EF5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		99BCCD451D850B14005B064E /* GIFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFCollectionViewCell.swift; sourceTree = "<group>"; };
+		99BCCD471D850B22005B064E /* GIFAnimatableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFAnimatableImageView.swift; sourceTree = "<group>"; };
+		99BCCD491D851042005B064E /* GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIF.swift; sourceTree = "<group>"; };
 		99D3C6AD1D6538FC00E7A30A /* GIF Search App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GIF Search App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D3C6B01D6538FC00E7A30A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99D3C6B51D6538FC00E7A30A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +69,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		99BCCD4B1D851049005B064E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9902A8A01D7B9D1500435EF5 /* AlamofireHandler.swift */,
+				99BCCD491D851042005B064E /* GIF.swift */,
+				9902A8A21D7B9DBE00435EF5 /* Constants.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		99BCCD4C1D85105A005B064E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99BCCD471D850B22005B064E /* GIFAnimatableImageView.swift */,
+				99BCCD451D850B14005B064E /* GIFCollectionViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		99BCCD4D1D851067005B064E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9902A89E1D7B9C3300435EF5 /* GIFViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		99D3C6A41D6538FC00E7A30A = {
 			isa = PBXGroup;
 			children = (
@@ -85,9 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				99D3C6B41D6538FC00E7A30A /* Main.storyboard */,
-				9902A89E1D7B9C3300435EF5 /* GIFViewController.swift */,
-				9902A8A01D7B9D1500435EF5 /* AlamofireHandler.swift */,
-				9902A8A21D7B9DBE00435EF5 /* Constants.swift */,
+				99BCCD4C1D85105A005B064E /* View */,
+				99BCCD4B1D851049005B064E /* Model */,
+				99BCCD4D1D851067005B064E /* ViewController */,
 				99D3C6C51D65392B00E7A30A /* Supporting Files */,
 			);
 			path = "GIF Search App";
@@ -227,11 +260,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99BCCD4A1D851042005B064E /* GIF.swift in Sources */,
 				9902A8A31D7B9DBE00435EF5 /* Constants.swift in Sources */,
+				99BCCD461D850B14005B064E /* GIFCollectionViewCell.swift in Sources */,
 				99D3C6B91D6538FC00E7A30A /* GIF_Search_App.xcdatamodeld in Sources */,
 				99D3C6B11D6538FC00E7A30A /* AppDelegate.swift in Sources */,
 				9902A89F1D7B9C3300435EF5 /* GIFViewController.swift in Sources */,
 				9902A8A11D7B9D1500435EF5 /* AlamofireHandler.swift in Sources */,
+				99BCCD481D850B22005B064E /* GIFAnimatableImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

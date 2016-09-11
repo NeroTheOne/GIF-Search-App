@@ -19,25 +19,16 @@ class GIFViewController: UICollectionViewController {//UIViewController, UIColle
    
 //   @IBOutlet weak var collectionView: UICollectionView!
    
-   var giphyDatas = [NSData]() {
-      willSet{
-         print("NEW giphyData added: \(newValue)")
-         collectionView!.reloadData()
+   var GIFs = [GIF]() {
+      didSet{
+         collectionView?.reloadData()
       }
    }
-   
-   var urls = [String]() {
-      willSet{
-         print("NEW URL added: \(newValue)")
-      }
-   }
-   
    
    override func viewDidLoad() {
       print("viewDidLoad fired")
       super.viewDidLoad()
 //      collectionView.delegate = self
-     
    }
    
    var alamoHandler = AlamofireHandler()
@@ -47,29 +38,23 @@ class GIFViewController: UICollectionViewController {//UIViewController, UIColle
       super.viewWillAppear(animated)
       
       alamoHandler.getTrending { (json) in
-         self.alamoHandler.getURL(json, completion: { (giphyURL) in
-            self.urls = giphyURL
-            self.alamoHandler.getData(giphyURL, completion: { (giphyData) in
-               dispatch_async(dispatch_get_main_queue()) {
-                  self.giphyDatas = giphyData
-               }
-            })
+         self.alamoHandler.getURL(json, completion: { (gifs) in
+            self.GIFs = gifs
          })
       }
    }
    
    
    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return giphyDatas.count
+      print("numberOfItemsInSection executed")
+      
+      return GIFs.count
    }
    
    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GifCell", forIndexPath: indexPath) as! GIFCollectionViewCell
-      let data = giphyDatas[indexPath.row]
       
-      dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)){
-         cell.animatableImageView.animateWithImageData(data)
-      }
+      
+      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GifCell", forIndexPath: indexPath) as! GIFCollectionViewCell
    
       return cell
    }

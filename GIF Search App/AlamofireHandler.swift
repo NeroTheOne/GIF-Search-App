@@ -29,9 +29,10 @@
          }
       }
       
-      func getURL(json: AnyObject, completion:(giphyURL:[String]) -> Void){
+      func getURL(json: AnyObject, completion:(gifs:[GIF]) -> Void){
          print("getURL fired")
-         var urls = [String]()
+         
+         var gifs = [GIF]()
          
          guard let dictionaries = json["data"] as? [NSDictionary] else { print("json[data] not found") ; return}
          
@@ -40,10 +41,11 @@
             guard let downsized_medium = images["downsized_medium"] else {return}
             guard let url = downsized_medium!["url"] as? String else {return}
             
-            urls.append(url)
+            let gif = GIF(url: url)
+            gifs.append(gif)
          }
          
-         completion(giphyURL: urls)
+         completion(gifs: gifs)
       }
       
       func getData(urls:[String], completion:(giphyData:[NSData]) -> Void){
