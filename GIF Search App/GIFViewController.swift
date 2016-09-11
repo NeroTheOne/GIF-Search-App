@@ -18,10 +18,12 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
    }
    
    // MARK: IBOutlets
+   
    @IBOutlet weak var gifsCollectionView: UICollectionView!
    @IBOutlet weak var gifSearchBar: UISearchBar!
    
    // MARK: Variables
+   
    var GIFs = [GIF]() {
       didSet{
          gifsCollectionView?.reloadData()
@@ -31,6 +33,7 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
    let alamoHandler = AlamofireHandler()
    
    //MARK: LifeCycle
+   
    override func viewDidLoad() {
       print("viewDidLoad fired")
       super.viewDidLoad()
@@ -43,10 +46,17 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
       
       alamoHandler.getTrending { (json) in
          self.alamoHandler.getURL(json, completion: { (gifs) in
-            self.GIFs = gifs
+            dispatch_async(dispatch_get_main_queue()) {
+               self.GIFs = gifs
+               self.title = "Trending"
+            }
          })
       }
    }
+   
+   // MARK: IBActions
+
+ 
    
    // MARK: Collection View Delegate & Data Source
    
@@ -92,20 +102,22 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
       print("searchBarSearchButtonClicked fired")
       
-   }
-   
-   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-      print("searchBar fired")
-      
-      
-      
       if let text = searchBar.text where !text.isEmpty {
          alamoHandler.search(text) { (json) in
             self.alamoHandler.getURL(json, completion: { (gifs) in
                self.GIFs = gifs
+               self.title = text
             })
          }
       }
+      
+      searchBar.resignFirstResponder()
+   }
+   
+   
+   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+      print("searchBar fired")
+      
    }
    
    
