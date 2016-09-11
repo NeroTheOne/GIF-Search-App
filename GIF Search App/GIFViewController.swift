@@ -44,7 +44,6 @@ class GIFViewController: UICollectionViewController {//UIViewController, UIColle
       }
    }
    
-   
    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       print("numberOfItemsInSection executed")
       
@@ -53,10 +52,20 @@ class GIFViewController: UICollectionViewController {//UIViewController, UIColle
    
    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
       
-      
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GifCell", forIndexPath: indexPath) as! GIFCollectionViewCell
-   
+      
       return cell
    }
+   
+   override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+      guard let cell = cell as? GIFCollectionViewCell else { return }
+      cell.setAnimatableImageView(GIFs[indexPath.row])
+   }
+   
+   override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+      guard let cell = cell as? GIFCollectionViewCell else { return }
+      cell.loadingView.hidden = false
+   }
+   
    
 }

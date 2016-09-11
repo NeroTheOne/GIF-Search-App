@@ -46,18 +46,40 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJB-y2-g8J" customClass="GIFAnimatableImageView" customModule="GIF_Search_App" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="299" height="300"/>
                                         </imageView>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYi-WW-gMY">
+                                            <rect key="frame" x="0.0" y="0.0" width="299" height="300"/>
+                                            <subviews>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CFP-T5-qOz">
+                                                    <rect key="frame" x="131" y="131" width="37" height="37"/>
+                                                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="CFP-T5-qOz" firstAttribute="leading" secondItem="aYi-WW-gMY" secondAttribute="leading" constant="131" id="ROp-Rx-FEd"/>
+                                                <constraint firstAttribute="trailing" secondItem="CFP-T5-qOz" secondAttribute="trailing" constant="131" id="W5Q-sS-fB6"/>
+                                                <constraint firstAttribute="bottom" secondItem="CFP-T5-qOz" secondAttribute="bottom" constant="132" id="usg-98-hXn"/>
+                                                <constraint firstItem="CFP-T5-qOz" firstAttribute="top" secondItem="aYi-WW-gMY" secondAttribute="top" constant="131" id="xjQ-Vg-Rxs"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" red="0.96179646600000002" green="0.89722150700000003" blue="0.00089003740609999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="aYi-WW-gMY" firstAttribute="top" secondItem="CKJ-LQ-VL4" secondAttribute="top" id="FAe-ti-QgP"/>
                                     <constraint firstItem="sJB-y2-g8J" firstAttribute="top" secondItem="CKJ-LQ-VL4" secondAttribute="top" id="G0m-35-kOk"/>
+                                    <constraint firstItem="aYi-WW-gMY" firstAttribute="leading" secondItem="CKJ-LQ-VL4" secondAttribute="leading" id="Qa9-rl-gOE"/>
                                     <constraint firstAttribute="bottom" secondItem="sJB-y2-g8J" secondAttribute="bottom" id="Ssy-KZ-tBj"/>
                                     <constraint firstAttribute="trailing" secondItem="sJB-y2-g8J" secondAttribute="trailing" id="bYg-7L-6s0"/>
+                                    <constraint firstAttribute="bottom" secondItem="aYi-WW-gMY" secondAttribute="bottom" id="ges-39-dpr"/>
                                     <constraint firstItem="sJB-y2-g8J" firstAttribute="leading" secondItem="CKJ-LQ-VL4" secondAttribute="leading" id="h72-F6-VCc"/>
+                                    <constraint firstAttribute="trailing" secondItem="aYi-WW-gMY" secondAttribute="trailing" id="oY0-4G-2lX"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="animatableImageView" destination="sJB-y2-g8J" id="SYT-iE-V8A"/>
+                                    <outlet property="loadingAnimation" destination="CFP-T5-qOz" id="Z1k-dr-3E0"/>
+                                    <outlet property="loadingView" destination="aYi-WW-gMY" id="Ttu-hv-NtH"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
