@@ -15,7 +15,25 @@
          print("getTrending fired")
          
          Alamofire.request(.GET, "\(GiphyApi.host)\(GiphyApi.EndPoint.trending)",
-            parameters: ["api_key": "dc6zaTOxFJmzC", "rating": "r", GiphyApi.Parameters.limit: "10"])
+            parameters: ["api_key": "dc6zaTOxFJmzC", "rating": "r", GiphyApi.Parameters.limit: "20"])
+            .responseJSON { response in
+               print(response.request)  // original URL request
+               print(response.response) // URL response
+               print(response.data)     // server data
+               print(response.result)   // result of response serialization
+               
+               if let JSON = response.result.value {
+                  print("JSON: \(JSON)")
+                  completion(json: JSON)
+               }
+         }
+      }
+      
+      func search(search: String, completion:(json: AnyObject) -> Void) {
+         print("search fired")
+         
+         Alamofire.request(.GET, "\(GiphyApi.host)\(GiphyApi.EndPoint.search)",
+            parameters: ["q": search,"api_key": "dc6zaTOxFJmzC", "rating": "r", GiphyApi.Parameters.limit: "20"])
             .responseJSON { response in
                print(response.request)  // original URL request
                print(response.response) // URL response
@@ -46,21 +64,6 @@
          }
          
          completion(gifs: gifs)
-      }
-      
-      func getData(urls:[String], completion:(giphyData:[NSData]) -> Void){
-         print("getData fired")
-         
-         var datas = [NSData]()
-         
-         for url in urls {
-            print("URL being converted to data: ", url)
-            guard let nsUrl = NSURL(string: url) else {return}
-            guard let data = NSData(contentsOfURL: nsUrl) else {return}
-            datas.append(data)
-         }
-         
-         completion(giphyData: datas)
       }
    }
    

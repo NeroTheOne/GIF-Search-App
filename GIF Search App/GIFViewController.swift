@@ -11,29 +11,31 @@ import UIKit
 import Alamofire
 import Gifu
 
-class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
    struct StoryBoard {
       static let collectionViewCell = "GifCell"
    }
    
-//   @IBOutlet weak var collectionView: UICollectionView!
+   // MARK: IBOutlets
    @IBOutlet weak var gifsCollectionView: UICollectionView!
+   @IBOutlet weak var gifSearchBar: UISearchBar!
    
-   
+   // MARK: Variables
    var GIFs = [GIF]() {
       didSet{
          gifsCollectionView?.reloadData()
       }
    }
    
+   let alamoHandler = AlamofireHandler()
+   
+   //MARK: LifeCycle
    override func viewDidLoad() {
       print("viewDidLoad fired")
       super.viewDidLoad()
-//      collectionView.delegate = self
+      gifSearchBar.delegate = self
    }
-   
-   var alamoHandler = AlamofireHandler()
    
    override func viewWillAppear(animated: Bool) {
       print("viewWillAppear fired")
@@ -45,6 +47,8 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
          })
       }
    }
+   
+   // MARK: Collection View Delegate & Data Source
    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       print("numberOfItemsInSection executed")
@@ -70,6 +74,52 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
       guard let cell = cell as? GIFCollectionViewCell else { return }
       cell.whiteView.hidden = false
    }
+   
+   // MARK: Search Bard Delegates
+   
+   func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+      print("searchBarTextDidEndEditing fired")
+      
+      if let text = searchBar.text where !text.isEmpty {
+         alamoHandler.search(text) { (json) in
+            self.alamoHandler.getURL(json, completion: { (gifs) in
+               self.GIFs = gifs
+            })
+         }
+      }
+   }
+   
+   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+      print("searchBarSearchButtonClicked fired")
+      
+   }
+   
+   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+      print("searchBar fired")
+      
+      
+      
+      if let text = searchBar.text where !text.isEmpty {
+         alamoHandler.search(text) { (json) in
+            self.alamoHandler.getURL(json, completion: { (gifs) in
+               self.GIFs = gifs
+            })
+         }
+      }
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
 }

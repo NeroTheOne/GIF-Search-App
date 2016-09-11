@@ -108,8 +108,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="m5B-xL-7ci">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-tu-nLX">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4fq-T5-DK4">
                                     <size key="itemSize" width="300" height="300"/>
@@ -191,25 +195,21 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Jbf-d4-hRo"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dlt-e2-WFD">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dlt-e2-WFD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2iI-c8-F9D"/>
-                            <constraint firstItem="2tA-tu-nLX" firstAttribute="top" secondItem="dlt-e2-WFD" secondAttribute="bottom" id="Bdm-wM-tvu"/>
+                            <constraint firstAttribute="trailing" secondItem="m5B-xL-7ci" secondAttribute="trailing" id="Od9-3d-X4X"/>
                             <constraint firstAttribute="trailing" secondItem="2tA-tu-nLX" secondAttribute="trailing" id="Pdu-jq-CRx"/>
-                            <constraint firstAttribute="trailing" secondItem="dlt-e2-WFD" secondAttribute="trailing" id="Vti-A1-k2v"/>
-                            <constraint firstItem="dlt-e2-WFD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ajr-LB-aBG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2tA-tu-nLX" secondAttribute="bottom" id="eXN-R6-rki"/>
-                            <constraint firstItem="2tA-tu-nLX" firstAttribute="top" secondItem="dlt-e2-WFD" secondAttribute="bottom" id="naJ-e8-QFA"/>
+                            <constraint firstItem="m5B-xL-7ci" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ntU-8K-EAI"/>
                             <constraint firstItem="2tA-tu-nLX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s2c-8L-hrV"/>
+                            <constraint firstItem="m5B-xL-7ci" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tV5-QF-49y"/>
+                            <constraint firstItem="2tA-tu-nLX" firstAttribute="top" secondItem="m5B-xL-7ci" secondAttribute="bottom" id="yed-kZ-hc0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="m3w-Ah-AWz"/>
                     <connections>
+                        <outlet property="gifSearchBar" destination="m5B-xL-7ci" id="DP8-Ly-aOk"/>
                         <outlet property="gifsCollectionView" destination="2tA-tu-nLX" id="aeF-HC-jTu"/>
                     </connections>
                 </viewController>
