@@ -10,10 +10,14 @@ import Foundation
 import Gifu
 
 class GIF {
+   
+   
    var url: String?
    var data: NSData?
    
    init(url: String) {
       self.url = url
    }
+   
+
 }
