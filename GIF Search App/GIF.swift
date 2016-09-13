@@ -14,9 +14,13 @@ class GIF {
    
    var url: String?
    var data: NSData?
+   var width: String?
+   var height: String?
    
-   init(url: String) {
+   init(url: String, width: String, height: String) {
       self.url = url
+      self.width = width
+      self.height = height
    }
    
 

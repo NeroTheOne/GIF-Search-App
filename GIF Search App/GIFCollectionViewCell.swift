@@ -10,13 +10,10 @@ import UIKit
 import Gifu
 
 class GIFCollectionViewCell: UICollectionViewCell {
-   
-
 
    @IBOutlet weak var animatableImageView: GIFAnimatableImageView!
    @IBOutlet weak var whiteView: UIView!
    @IBOutlet weak var loadingAnimation: UIActivityIndicatorView!
-   
    
    func setAnimatableImageView(gif: GIF) {
       guard let urlString = gif.url else { return }
