@@ -25,3 +25,7 @@ struct GiphyApi {
       static let format = "fmt"
    }
 }
+
+struct StoryBoard {
+   static let collectionViewCell = "GifCell"
+}

@@ -11,11 +11,10 @@ import UIKit
 import Alamofire
 import Gifu
 
-class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UINavigationBarDelegate {
 
-   struct StoryBoard {
-      static let collectionViewCell = "GifCell"
-   }
+   // MARK: Model
+      var currentSearch: String?
    
    // MARK: IBOutlets
    
@@ -38,6 +37,10 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
       print("viewDidLoad fired")
       super.viewDidLoad()
       gifSearchBar.delegate = self
+      gifSearchBar.barStyle = UIBarStyle.BlackTranslucent
+      navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
+      navigationController!.navigationBar.barTintColor = UIColor.clearColor()
+      
    }
    
    override func viewWillAppear(animated: Bool) {
@@ -67,19 +70,27 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
    }
    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+      print("cellForItemAtIndexPath fired")
       
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GifCell", forIndexPath: indexPath) as! GIFCollectionViewCell
       
       return cell
    }
    
+   var gifImageHeight: CGFloat?
+   
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
+      print("willDisplayCell fired")
+      
       guard let cell = cell as? GIFCollectionViewCell else { return }
       let gif = GIFs[indexPath.row]
       
       cell.whiteView.hidden = false
       cell.loadingAnimation.startAnimating()
       cell.setAnimatableImageView(gif)
+      
+      let imageViewHeight = cell.animatableImageView.frame.height
+      print("DEBUG image: \(gif.url) indexPath: \(indexPath.row) imageViewHeight: ", imageViewHeight)
    }
    
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
@@ -90,21 +101,38 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
    func collectionView(collectionView: UICollectionView,
                        layout collectionViewLayout: UICollectionViewLayout,
                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-      print("sizeForItemAtIndexPath fired")
+      print("== \(indexPath.row) ===")
       
       let gif = GIFs[indexPath.row]
-      let height = Int(gif.height!)
-      let width = Int(gif.width!)
       
-      return CGSizeMake(CGFloat(width!), CGFloat(height!))
+      var gifHeight = CGFloat(Int(gif.height!)!)
+         print("height: \(gifHeight)")
+      var gifWidth = CGFloat(Int(gif.width!)!)
+         print("width: \(gifWidth)")
+      let maxWidth = view.frame.width
+      
+      
+      if gifWidth > maxWidth {
+         print("maxWidth: \(maxWidth)")
+         let excessWidth = gifWidth - maxWidth
+            print("DEBUG excessWidth: ", excessWidth)
+         let percentage = 100 * (excessWidth / maxWidth) / 100
+            print("DEBUG percentage: ", percentage)
+         let heightPercentage = percentage * gifHeight
+            print("heightPercentage: \(heightPercentage)")
+         
+         gifWidth = maxWidth
+//         gifHeight -= (heightPercentage - 20)
+      }
+      
+      return CGSizeMake(gifWidth, gifHeight)
    }
+   
    
    // MARK: Search Bard Delegates
    
    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
       print("searchBarSearchButtonClicked fired")
-      
-      var currentSearch: String?
       
       if let text = searchBar.text where !text.isEmpty {
          if searchBar.text == currentSearch {
@@ -116,14 +144,21 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
                self.alamoHandler.getURL(json, completion: { (gifs) in
                   self.GIFs = gifs
                   self.title = text.uppercaseString
-                  currentSearch = text
-                  print("currentSearch: \(currentSearch), text: \(text)")
+                  self.currentSearch = text
+                  print("currentSearch: \(self.currentSearch), text: \(text)")
                })
             }
          }
       }
       
       searchBar.resignFirstResponder()
+   }
+   
+   func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+      print("searchBarCancelButtonClicked")
+      if searchBar.isFirstResponder() {
+         searchBar.resignFirstResponder()
+      }
    }
    
 

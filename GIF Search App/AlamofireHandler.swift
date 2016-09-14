@@ -59,9 +59,8 @@
                guard let gifImage = images["downsized_medium"] else {return}
                guard let url = gifImage!["url"] as? String else { print("error getting url") ;return}
                guard let width = gifImage!["width"] as? String else {print("error getting width"); return}
-                  print("DEBUG width: ", width)
                guard let height = gifImage!["height"] as? String else {return}
-                  print("DEBUG height: ", height)
+
                let gif = GIF(url: url, width: width, height: height)
                gifs.append(gif)
          }

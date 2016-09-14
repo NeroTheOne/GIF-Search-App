@@ -23,6 +23,7 @@ class GIFCollectionViewCell: UICollectionViewCell {
          if let data = NSData(contentsOfURL: url!) {
             dispatch_async(dispatch_get_main_queue()) {
                self.animatableImageView!.animateWithImageData(data)
+               self.sizeToFit()
                self.loadingAnimation.stopAnimating()
                self.whiteView.hidden = true
             }
