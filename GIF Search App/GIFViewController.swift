@@ -43,7 +43,6 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
       gifSearchBar.barStyle = UIBarStyle.BlackTranslucent
       navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
       navigationController!.navigationBar.barTintColor = UIColor.clearColor()
-      
    }
    
    override func viewWillAppear(animated: Bool) {
@@ -88,8 +87,6 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
       guard let cell = cell as? GIFCollectionViewCell else { return }
       let gif = GIFs[indexPath.row]
       
-      cell.whiteView.hidden = false
-      cell.loadingAnimation.startAnimating()
       cell.setAnimatableImageView(gif)
       
       let imageViewHeight = cell.animatableImageView.frame.height
@@ -114,7 +111,7 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
       
       let gif = GIFs[indexPath.row]
       
-      let gifHeight = CGFloat(Int(gif.height!)!)
+      var gifHeight = CGFloat(Int(gif.height!)!)
       print("height: \(gifHeight)")
       var gifWidth = CGFloat(Int(gif.width!)!)
       print("width: \(gifWidth)")
@@ -125,13 +122,13 @@ class GIFViewController: UIViewController, UICollectionViewDelegate, UICollectio
          print("maxWidth: \(maxWidth)")
          let excessWidth = gifWidth - maxWidth
          print("DEBUG excessWidth: ", excessWidth)
-         let percentage = 100 * (excessWidth / maxWidth) / 100
+         let percentage = 100 * (excessWidth / gifWidth) / 100
          print("DEBUG percentage: ", percentage)
          let heightPercentage = percentage * gifHeight
          print("heightPercentage: \(heightPercentage)")
          
          gifWidth = maxWidth
-         //         gifHeight -= (heightPercentage - 20)
+         gifHeight -= heightPercentage 
       }
       
       return CGSizeMake(gifWidth, gifHeight)

@@ -16,20 +16,31 @@ class GIFCollectionViewCell: UICollectionViewCell {
    @IBOutlet weak var loadingAnimation: UIActivityIndicatorView!
    
    func setAnimatableImageView(gif: GIF) {
+      whiteView.backgroundColor = randomColor()
+      whiteView.hidden = false
+      loadingAnimation.hidden = true
+//      loadingAnimation.startAnimating()
       guard let urlString = gif.url else { return }
-      loadingAnimation.startAnimating()
+//      loadingAnimation.startAnimating()
       dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
          let url = NSURL(string: urlString)
          if let data = NSData(contentsOfURL: url!) {
             dispatch_async(dispatch_get_main_queue()) {
                self.animatableImageView!.animateWithImageData(data)
                self.sizeToFit()
-               self.loadingAnimation.stopAnimating()
+//               self.loadingAnimation.stopAnimating()
                self.whiteView.hidden = true
             }
          }
          
       }
+   }
+   
+   func randomColor() -> UIColor {
+      var colors = [UIColor.purpleColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.redColor(),
+                    UIColor.orangeColor(), UIColor.magentaColor()]
+      let randomColor = colors[Int(arc4random_uniform(5))]
+      return randomColor
    }
    
 }
