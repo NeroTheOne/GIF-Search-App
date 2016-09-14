@@ -82,8 +82,8 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-tu-nLX">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-tu-nLX">
+                                <rect key="frame" x="0.0" y="100" width="600" height="492"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4fq-T5-DK4">
@@ -144,16 +144,35 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Jbf-d4-hRo"/>
                                 </connections>
                             </collectionView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YtW-aU-JWj">
+                                <rect key="frame" x="151" y="185" width="258" height="51"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sorry, search not found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sop-jd-mSW">
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOt-p9-6Ov">
+                                        <rect key="frame" x="108" y="30" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="m5B-xL-7ci" secondAttribute="trailing" id="Od9-3d-X4X"/>
                             <constraint firstAttribute="trailing" secondItem="2tA-tu-nLX" secondAttribute="trailing" id="Pdu-jq-CRx"/>
+                            <constraint firstItem="YtW-aU-JWj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RPB-Cb-ah1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2tA-tu-nLX" secondAttribute="bottom" id="eXN-R6-rki"/>
                             <constraint firstItem="m5B-xL-7ci" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ntU-8K-EAI"/>
                             <constraint firstItem="2tA-tu-nLX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s2c-8L-hrV"/>
                             <constraint firstItem="m5B-xL-7ci" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tV5-QF-49y"/>
+                            <constraint firstItem="YtW-aU-JWj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vWO-oG-iWn"/>
                             <constraint firstItem="2tA-tu-nLX" firstAttribute="top" secondItem="m5B-xL-7ci" secondAttribute="bottom" id="yed-kZ-hc0"/>
                         </constraints>
                     </view>
@@ -161,6 +180,8 @@
                     <connections>
                         <outlet property="gifSearchBar" destination="m5B-xL-7ci" id="DP8-Ly-aOk"/>
                         <outlet property="gifsCollectionView" destination="2tA-tu-nLX" id="aeF-HC-jTu"/>
+                        <outlet property="searchLabel" destination="oOt-p9-6Ov" id="rcB-cS-y0X"/>
+                        <outlet property="searchNotFoundLabels" destination="YtW-aU-JWj" id="ItM-iI-yJ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -29,7 +29,7 @@
          }
       }
       
-      func search(search: String, completion:(json: AnyObject) -> Void) {
+      func search(search: String, completion:(json: AnyObject?, success: Bool) -> Void) {
          print("search fired")
          
          Alamofire.request(.GET, "\(GiphyApi.host)\(GiphyApi.EndPoint.search)",
@@ -42,8 +42,8 @@
                
                if let JSON = response.result.value {
                   print("JSON: \(JSON)")
-                  completion(json: JSON)
-               }
+                  completion(json: JSON, success: true)
+               } 
          }
       }
       
