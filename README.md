@@ -1,1 +1,1 @@
-[![Demo CountPages alpha](https://j.gifs.com/ZVGlQv.gif)]
+[![Demo CountPages alpha](https://j.gifs.com/86zwZl.gif)]
